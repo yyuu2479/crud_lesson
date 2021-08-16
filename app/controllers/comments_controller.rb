@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  def top
+  end
+  
   def index
     @comments = Comment.all
     @comment = Comment.new
@@ -19,6 +22,9 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to comments_path
   end
   
   def update

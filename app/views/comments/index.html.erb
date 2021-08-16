@@ -14,8 +14,8 @@
         <tr>
           <td><%= link_to comment.title, comment_path(comment.id) %></td>
           <td><%= comment.body %></td>
-          <td><%= link_to '編集', edit_comment_path(comment.id) %></td>
-          <td><%= link_to '削除'%></td>
+          <td><%= link_to '編集', edit_comment_path(comment.id) %> |</td>
+          <td><%= link_to '削除', comment_path(comment.id), method: :delete %></td>
         </tr>
       <% end %>
   </tbody>
