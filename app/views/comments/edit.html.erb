@@ -1,0 +1,14 @@
+<h2>編集ページ</h2>
+<%= form_with model: @comment, local: true do |f| %>
+  <div class="text-field">
+    <p>タイトル</p>
+    <%= f.text_field :title %>
+  </div>
+  <div class="text-field">
+    <p>本文</p>
+    <%= f.text_area :body %>
+  </div>
+  <div class="btn">
+    <%= f.submit '投稿' %>
+  </div>
+<% end %>
