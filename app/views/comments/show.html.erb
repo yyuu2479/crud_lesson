@@ -1,4 +1,5 @@
 <h2>投稿詳細ページ</h2>
+<%= attachment_image_tag @comment, :image, :fill,100,100, format: 'jpeg', fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%>
 <p>タイトル: <%= @comment.title%></p>
 <p>本文: <%= @comment.body %></p>
 <%= link_to '戻る', comments_path %>
