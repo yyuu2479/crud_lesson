@@ -1,5 +1,10 @@
 <div class="container">
   <div class="top">
-    <%= link_to 'クリック！', comments_path, class:'btn btn-outline-primary btn-lg btn-block'%>
+    <% if user_signed_in? %>
+      <%= link_to 'クリック！', comments_path, class:'btn btn-outline-primary btn-lg btn-block'%>
+    <% else %>
+      <%= link_to '新規登録へ！', new_user_registration_path, class:'btn btn-outline-primary btn-lg btn-block'%>
+      <%= link_to 'ログインへ！', new_user_session_path, class:'btn btn-outline-success btn-lg btn-block'%>
+    <% end %>
   </div>
 </div>

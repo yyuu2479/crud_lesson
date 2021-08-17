@@ -4,6 +4,7 @@
   </div>
 <!--投稿一覧-->
   <%= render 'comments/list', comments:@comments %>
+  <%= paginate @comments%>
 <!--新規投稿-->
   <%= render 'comments/new', comment:@comment %>
 </div>
