@@ -6,6 +6,9 @@
       <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <%= link_to user_path(current_user.id) do%>
+            <li class="btn btn-dark">詳細ページ</li>
+          <% end %>
           <%= link_to destroy_user_session_path, method: :delete do%>
             <li class="btn btn-dark">ログアウト</li>
           <% end %>

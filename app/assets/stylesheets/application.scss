@@ -17,15 +17,6 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-
-header{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-  width: 100%;
-}
-
 .top{
   margin: 100px auto;
   text-align: center;
@@ -40,10 +31,10 @@ header{
 }
 
 .main-title{
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 .show-title, .edit-title{
-  margin-top: 90px;
+  margin-top: 70px;
   margin-bottom: 30px;
 }

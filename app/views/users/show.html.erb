@@ -1,0 +1,6 @@
+<h2>ユーザー詳細ページ</h2>
+<p><%= @user.name%></p>
+<p><%= @user.created_at.to_s(:datetime) %></p>
+<p><%= @user.updated_at.to_s(:datetime) %></p>
+<p><%= link_to 'ユーザー編集', edit_user_path(@user.id)%></p>
+<p><%= link_to '戻る', comments_path %></p>
