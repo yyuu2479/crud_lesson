@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only:[:index, :show, :edit]
+  
   def top
   end
   
   def index
-    @comments = Comment.all
+    @comments = Comment.page(params[:page]).reverse_order
     @comment = Comment.new
   end
   
@@ -17,6 +19,7 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
     @comment.save
     redirect_to comments_path
   end

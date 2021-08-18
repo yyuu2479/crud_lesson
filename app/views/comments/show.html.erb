@@ -1,5 +1,13 @@
-<h2>投稿詳細ページ</h2>
-<%= attachment_image_tag @comment, :image, :fill,100,100, format: 'jpeg', fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%>
-<p>タイトル: <%= @comment.title%></p>
-<p>本文: <%= @comment.body %></p>
-<%= link_to '戻る', comments_path %>
+<div class="container">
+  <div class="card w-50 mx-auto shadow show-title">
+    <%= attachment_image_tag @comment, :image, :fill,500,500, format: 'jpeg', fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', class:'card-img-top'%>
+    <div class="card-body">
+      <%= link_to user_path(@comment.user) do%>
+        <%= attachment_image_tag @comment.user, :profile_image, :fill,70,70, format: 'jpeg', fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', class:'img-thumbnail rounded-circle'%>
+      <% end %>
+      <h5 class="card-title font-weight-bold pt-3">タイトル: <%= @comment.title%></h5>
+      <p class="card-text">本文: <%= @comment.body %></p>
+    </div>
+    <%= link_to '戻る', comments_path, class:'btn btn-primary' %>
+  </div>
+</div>

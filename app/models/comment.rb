@@ -3,4 +3,6 @@ class Comment < ApplicationRecord
   validates :body, presence: true
   
   attachment :image
+  
+  belongs_to :user
 end

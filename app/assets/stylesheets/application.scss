@@ -16,3 +16,25 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.top{
+  margin: 100px auto;
+  text-align: center;
+}
+
+.lesson-footer{
+  text-align: center;
+  width: 100%;
+  padding: 5px;
+  color: white;
+  background-color: #696969;
+}
+
+.main-title{
+  margin-top: 60px;
+}
+
+.show-title, .edit-title{
+  margin-top: 70px;
+  margin-bottom: 30px;
+}

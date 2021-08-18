@@ -1,5 +1,5 @@
-<div class="col-md-11 mx-auto">
-  <table class="table">
+<div class="col-md-12 mx-auto">
+  <table class="table table-hover shadow-sm">
     <thead>
       <tr>
         <th></th>
@@ -11,11 +11,11 @@
     <tbody>
       <% comments.each do |comment|%>
         <tr>
-          <td><%= attachment_image_tag comment, :image, :fill,60,60, format: 'jpeg', fallback:'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%></td>
+          <td><%= attachment_image_tag comment, :image, :fill,100,100, format: 'jpeg', fallback:'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%></td>
           <td><%= link_to comment.title, comment_path(comment.id) %></td>
           <td><%= comment.body %></td>
-          <td><%= link_to '編集', edit_comment_path(comment.id) %></td>
-          <td><%= link_to '削除', comment_path(comment.id), method: :delete %></td>
+          <td><%= link_to '編集', edit_comment_path(comment.id), class:'btn btn-success btn-sm' %></td>
+          <td><%= link_to '削除', comment_path(comment.id), method: :delete, class:'btn btn-danger btn-sm' %></td>
         </tr>
       <% end %>
     </tbody>
