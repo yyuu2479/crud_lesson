@@ -1,3 +1,14 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.main-title{
+  margin-top: 60px;
+  border-left: 5px solid #00bfff;
+}
+
+.show-title, .edit-title{
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
