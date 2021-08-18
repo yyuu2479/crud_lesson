@@ -1,10 +1,13 @@
 <div class="container">
   <div class="ml-3 main-title">
-    <h2 class="font-italic"><strong>投稿一覧＆新規投稿</strong></h2>
+    <h2 class="font-italic"><strong>投稿一覧</strong></h2>
   </div>
 <!--投稿一覧-->
   <%= render 'comments/list', comments:@comments %>
-  <%= paginate @comments%>
+  <%= paginate @comments %>
 <!--新規投稿-->
+  <div class="ml-3 main-title">
+    <h2 class="font-italic"><strong>新規投稿</strong></h2>
+  </div>
   <%= render 'comments/new', comment:@comment %>
 </div>
