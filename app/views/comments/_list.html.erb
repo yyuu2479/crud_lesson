@@ -18,8 +18,21 @@
             <td><%= link_to '編集', edit_comment_path(comment.id), class:'btn btn-success btn-sm' %></td>
             <td><%= link_to '削除', comment_path(comment.id), method: :delete, class:'btn btn-danger btn-sm' %></td>
           <% else %>
-            <td></td>
-            <td></td>
+            <% if comment.favorited_by?(current_user)%>
+              <td>
+                <%= link_to comment_favorites_path(comment.id), method: :delete do %>
+                  <i class="fas fa-heart heart"></i>
+                  <td></td>
+                <% end %>
+              </td>
+            <% else%>
+              <td>
+                <%= link_to comment_favorites_path(comment.id), method: :post do %>
+                  <i class="far fa-heart text-dark"></i>
+                  <td></td>
+                <% end %>
+              </td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>
