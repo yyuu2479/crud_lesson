@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 my-5 py-5 pl-5 shadow edit-title">
+    <div class="col-md-5 mt-5 py-5 pl-5 h-1 shadow edit-title">
       <h2 class="font-italic"><strong>ユーザー詳細ページ</strong></h2>
       <%= attachment_image_tag @user, :profile_image, :fill,100,100, format: 'jpeg',
       fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'100x100', class:'img-thumbnail rounded-circle'%>
@@ -10,8 +10,14 @@
       <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
       <p><%= link_to '戻る', comments_path, class:'btn btn-primary' %></p>
     </div>
-    <div class="col-md-7 my-5">
-      <%= render 'users/favorite', user: @user%>
+
+    <!--いいね・投稿一覧-->
+    <div class="col-md-7">
+      <h2 class="edit-title pl-1"><strong>いいね一覧</strong></h2>
+      <%= render 'users/favorite', favorites: @favorites %>
+      <h2 class="edit-title pl-1"><strong>投稿一覧</strong></h2>
+      <%= render 'users/list', comments: @comments%>
+      <%= paginate @comments %>
     </div>
   </div>
 </div>
