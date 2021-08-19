@@ -1,12 +1,17 @@
 <div class="container">
-  <div class="col-md-5 mx-auto my-5 py-5 pl-5 shadow edit-title">
-    <h2 class="font-italic"><strong>ユーザー詳細ページ</strong></h2>
-    <%= attachment_image_tag @user, :profile_image, :fill,100,100, format: 'jpeg',
-    fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'100x100', class:'img-thumbnail rounded-circle'%>
-    <p class="font-weight-bold ml-3"><%= @user.name%></p>
-    <p class="font-weight-light">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
-    <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
-    <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
-    <p><%= link_to '戻る', comments_path, class:'btn btn-primary' %></p>
+  <div class="row">
+    <div class="col-md-5 my-5 py-5 pl-5 shadow edit-title">
+      <h2 class="font-italic"><strong>ユーザー詳細ページ</strong></h2>
+      <%= attachment_image_tag @user, :profile_image, :fill,100,100, format: 'jpeg',
+      fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'100x100', class:'img-thumbnail rounded-circle'%>
+      <p class="font-weight-bold ml-3"><%= @user.name%></p>
+      <p class="font-weight-light">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
+      <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
+      <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
+      <p><%= link_to '戻る', comments_path, class:'btn btn-primary' %></p>
+    </div>
+    <div class="col-md-7 my-5">
+      <%= render 'users/favorite', user: @user%>
+    </div>
   </div>
 </div>
