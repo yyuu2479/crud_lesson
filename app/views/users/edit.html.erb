@@ -1,5 +1,15 @@
+<%if @user.errors.any?%>
+  <div class="alert alert-danger w-50">
+    <h3 class="ml-3 font-weight-bold"><%= @user.errors.count%>件のエラーが発生しました!</h3>
+    <hr>
+    <% @user.errors.full_messages.each do |message|%>
+      <p class="ml-5"><%= message %></p>
+    <%end%>
+  </div>
+<%end%>
+
 <div class="container">
-  <div class="col-md-5 mx-auto  my-5 p-5 shadow edit-title">
+  <div class="col-md-5 mx-auto p-5 shadow edit-title">
     <h2 class="font-italic"><strong>ユーザー編集ページ</strong></h2>
     <%= form_with model: @user, local: true do |f| %>
       <div class="form-group">

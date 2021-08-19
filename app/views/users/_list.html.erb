@@ -15,7 +15,7 @@
         <td><%= comment.body %></td>
         <% if comment.user == current_user%>
           <td><%= link_to '編集', edit_comment_path(comment.id), class:'btn btn-success btn-sm' %></td>
-          <td><%= link_to '削除', comment_path(comment.id), method: :delete, class:'btn btn-danger btn-sm' %></td>
+          <td><%= link_to '削除', comment_path(comment.id), method: :delete, class:'btn btn-danger btn-sm', 'data-confirm'=>'本当に消しますか？' %></td>
         <%end%>
       </tr>
     <% end %>

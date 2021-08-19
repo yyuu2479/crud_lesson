@@ -23,8 +23,13 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_to comments_path
+    if @comment.save
+      flash[:notice] = "投稿が完了しました！！！"
+      redirect_to comments_path
+    else
+      @comments = Comment.page(params[:page]).reverse_order
+      render :index
+    end
   end
 
   def destroy
