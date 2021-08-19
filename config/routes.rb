@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     
     root  'comments#top'
     resources :comments, only:[:index, :show, :edit, :create, :destroy, :update] do
+        resources :post_comments, only:[:create, :destroy]
         resource :favorites, only:[:create, :destroy]
     end
     resources :users, only:[:show, :edit, :update]

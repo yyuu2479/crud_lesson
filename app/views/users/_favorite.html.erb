@@ -14,19 +14,17 @@
         fallback:'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%></td>
         <td><%= link_to favorite.comment.title, comment_path(favorite.comment.id) %></td>
         <td><%= favorite.comment.body %></td>
-        <% if favorite.comment.favorited_by?(current_user)%>
-          <td>
+        <td>
+          <% if favorite.comment.favorited_by?(current_user)%>
             <%= link_to comment_favorites_path(favorite.comment.id), method: :delete do %>
               <i class="fas fa-heart heart"></i>
             <% end %>
-          </td>
-        <% else %>
-          <td>
+          <% else %>
             <%= link_to comment_favorites_path(favorite.comment.id), method: :post do %>
               <i class="far fa-heart text-dark"></i>
             <% end %>
-          </td>
-        <% end %>
+          <% end %>
+        </td>
        </tr>
     <% end %>
   </tbody>

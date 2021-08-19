@@ -1,15 +1,17 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only:[:create, :destroy]
   
   def create
+    user = current_user
     comment = Comment.find(params[:comment_id])
-    Favorite.create(user_id: current_user.id, comment_id: comment.id)
+    @favorite = Favorite.new(user_id: user.id, comment_id: comment.id)
+    @favorite.save
     redirect_back fallback_location: root_path
   end
 
   def destroy
+    user = current_user
     comment = Comment.find(params[:comment_id])
-    Favorite.find_by(user_id: current_user.id, comment_id: comment.id).destroy
+    Favorite.find_by(user_id: user.id, comment_id: comment.id).destroy
     redirect_back fallback_location: root_path
   end
   

@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @post_comment = PostComment.new
+    @post_comments = @comment.post_comments.page(params[:page]).per('4').reverse_order
   end
 
   def edit
