@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="follow-title edit-title"><strong>フォロワー一覧</strong></h2>
   <div class="shadow-sm">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th></th>
@@ -14,9 +14,17 @@
       <tbody>
         <% @follower.each do |follower|%>
           <tr>
-            <td><%= attachment_image_tag follower, :profile_image, :fill,65,65, format: 'jpeg',
-            fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6'%></td>
-            <td><%= follower.name %></td>
+            <td>
+              <%= link_to user_path(follower.id) do%>
+                <%= attachment_image_tag follower, :profile_image, :fill,65,65, format: 'jpeg',
+                fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6', size:'65x65', class:'rounded-circle'%>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_path(follower.id) do%>
+                <%= follower.name %>
+              <% end %>
+              </td>
             <td><%= follower.created_at.to_s(:datetime)%></td>
             <td><%= follower.updated_at.to_s(:datetime)%></td>
             <td></td>

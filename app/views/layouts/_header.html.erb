@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container">
       <%= link_to root_path do%>
-        <h1 class="navbar-brand text-light mt-1">Trip Photos</h1>
+        <h1 class="navbar-brand mt-1 text-monospace font-weight-bold text-light" id="header-title">Trip Photos Collection</h1>
       <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
@@ -21,7 +21,7 @@
             fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'40x40', class:'rounded-circle'%>
           <% end %>
           <%= link_to destroy_user_session_path, method: :delete do%>
-            <li class="btn btn-dark mt-1 fas fa-sign-out-alt">ログアウト</li>
+            <li class="btn btn-dark mt-1 fas fa-sign-out-alt ">ログアウト</li>
           <% end %>
         <% else %>
           <%= link_to new_user_registration_path do%>

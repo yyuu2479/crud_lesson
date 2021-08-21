@@ -5,7 +5,7 @@ class PostCommentsController < ApplicationController
     @post_comment = PostComment.new(post_comment_params)
     @post_comment.user_id = current_user.id
     @post_comment.comment_id = comment.id
-    @post_comment.save
+  @post_comment.save
     redirect_back fallback_location: root_path
   end
   

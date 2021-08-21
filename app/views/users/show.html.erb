@@ -8,7 +8,7 @@
       <p class="font-weight-light">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
       <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
       <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
-      <!--フォロー機能, フォロー・フォロワー一覧-->
+      <!--フォロー機能,フォロー・フォロワー一覧-->
       <%= render 'users/follow', user: @user%>
       <p><%= link_to '戻る', comments_path, class:'btn btn-primary mt-3' %></p>
     </div>
