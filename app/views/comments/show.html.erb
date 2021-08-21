@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <div class="card mx-auto shadow show-title">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+      <div class="card shadow show-title">
         <%= attachment_image_tag @comment, :image, :fill,500,500, format: 'jpeg',
         fallback: 'noimage.jpeg', class:'card-img-top'%>
         <div class="card-body">
@@ -14,7 +14,7 @@
         <%= link_to '戻る', comments_path, class:'btn btn-primary' %>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
       <h3 class="show-title pl-1"><strong>コメント一覧</strong></h3>
       <table class="table table-hover shadow-sm">
         <thead>
@@ -29,7 +29,7 @@
           <tr>
             <td>
               <%= link_to user_path(post_comment.user.id) do%>
-                <%= attachment_image_tag post_comment.user, :profile_image, :fill,40,40, format: 'jpeg', 
+                <%= attachment_image_tag post_comment.user, :profile_image, :fill,40,40, format: 'jpeg',
                 fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'45x45', class:'rounded-circle'%>
               <% end %>
             </td>
@@ -50,7 +50,7 @@
           <%= f.text_area :post_comment, class:'form-control', id:'post_comment' %>
         </div>
         <div class="mt-2">
-          <%= f.submit '投稿', class:'btn btn-info'%>
+          <%= f.submit '投稿', class:'btn btn-info mb-3'%>
         </div>
       <% end %>
     </div>
