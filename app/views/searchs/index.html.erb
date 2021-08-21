@@ -1,4 +1,5 @@
-<h2 class="follow-title edit-title"><strong>検索結果 '<%= @content %>'</strong></h2>
 <% if @model == 'user'%>
-<% elsif %>
+  <%= render 'searchs/user', user_record: @user_record, content: @content %>
+<% elsif @model == 'book'%>
+  <%= render 'searchs/comment', comment_record: @comment_record, content: @content %>
 <% end %>
