@@ -6,7 +6,12 @@ Rails.application.routes.draw do
         resources :post_comments, only:[:create, :destroy]
         resource :favorites, only:[:create, :destroy]
     end
+    
     resources :users, only:[:show, :edit, :update] do
         resources :relationships, only:[:create, :destroy]
+        get 'following' => 'relationships#following', as: 'following'
+        get 'follower' => 'relationships#follower', as: 'follower'
     end
+    
+    get '/search' => 'searchs#index', as: 'search'
 end

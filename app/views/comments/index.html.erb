@@ -1,6 +1,6 @@
 <%if @comment.errors.any?%>
   <div class="alert alert-danger w-50">
-    <h3 class="ml-3 font-weight-bold"><%= @comment.errors.count%>件のエラーが発生しました!</h3>
+    <h3 class="ml-3 "><%= @comment.errors.count%>件のエラーが発生しました!</h3>
     <hr>
     <% @comment.errors.full_messages.each do |message|%>
       <p class="ml-5"><%= message %></p>

@@ -1,0 +1,5 @@
+<% if @model == 'user'%>
+  <%= render 'searchs/user', user_record: @user_record, content: @content %>
+<% elsif @model == 'book'%>
+  <%= render 'searchs/comment', comment_record: @comment_record, content: @content %>
+<% end %>
