@@ -1,0 +1,29 @@
+<div class="container">
+  <h2 class="follow-title edit-title"><strong>フォロワー一覧</strong></h2>
+  <div class="shadow-sm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>登録日時</th>
+          <th>更新日時</th>
+          <th colspan = "3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @follower.each do |follower|%>
+          <tr>
+            <td><%= attachment_image_tag follower, :profile_image, :fill,65,65, format: 'jpeg',
+            fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6'%></td>
+            <td><%= follower.name %></td>
+            <td><%= follower.created_at.to_s(:datetime)%></td>
+            <td><%= follower.updated_at.to_s(:datetime)%></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to '戻る', user_path(@user), class:'btn btn-primary mb-4' %>
+</div>
