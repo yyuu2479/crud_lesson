@@ -17,7 +17,9 @@
           <td><%= attachment_image_tag comment, :image, :fill,100,100, format: 'jpeg',
           fallback:'noimage.jpeg', size:'100x100'%></td>
           <td><%= link_to comment.title, comment_path(comment.id) %></td>
-          <td><%= comment.body %></td>
+          <td>
+            <p class="text-truncate"><%= comment.body %></p>
+          </td>
           <!--いいね数表示＆いいねボタン-->
           <td>
             <% if comment.favorited_by?(current_user)%>
