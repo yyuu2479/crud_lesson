@@ -9,21 +9,13 @@
   </thead>
   <tbody>
     <% favorites.each do |favorite|%>
-      <tr>
+      <tr id="comment_<%= favorite.comment.id %>">
         <td><%= attachment_image_tag favorite.comment, :image, :fill,100,100, format: 'jpeg',
         fallback:'noimage.jpeg', size: '100x100'%></td>
         <td><%= link_to favorite.comment.title, comment_path(favorite.comment.id) %></td>
         <td><%= favorite.comment.body %></td>
-        <td>
-          <% if favorite.comment.favorited_by?(current_user)%>
-            <%= link_to comment_favorites_path(favorite.comment.id), method: :delete do %>
-              <i class="fas fa-heart heart"></i>
-            <% end %>
-          <% else %>
-            <%= link_to comment_favorites_path(favorite.comment.id), method: :post do %>
-              <i class="far fa-heart text-dark"></i>
-            <% end %>
-          <% end %>
+        <td class="comment_favorite">
+          <%= render 'favorites/favorite', comment: favorite.comment %>
         </td>
        </tr>
     <% end %>
