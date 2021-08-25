@@ -14,8 +14,10 @@
         <%= link_to '戻る', comments_path, class:'btn btn-primary' %>
       </div>
     </div>
+    <!--コメント一覧-->
     <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
       <h3 class="show-title pl-1"><strong>コメント一覧</strong></h3>
+
       <table class="table table-hover shadow-sm">
         <thead>
           <tr>
@@ -24,30 +26,17 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-        <tbody>
-          <% @post_comments.each do |post_comment|%>
-          <tr>
-            <td>
-              <%= link_to user_path(post_comment.user.id) do%>
-                <%= attachment_image_tag post_comment.user, :profile_image, :fill,40,40, format: 'jpeg',
-                fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'45x45', class:'rounded-circle'%>
-              <% end %>
-            </td>
-            <td class="pt-4"><%= post_comment.post_comment%></td>
-            <%if post_comment.user.id == current_user.id%>
-              <td><%= link_to '削除', comment_post_comment_path(@comment.id, post_comment.id), method: :delete, class:'btn btn-danger' %></td>
-            <% else %>
-              <td></td>
-            <% end %>
-          </tr>
-          <% end %>
+        <tbody id = "post_comment_<%= @comment.id %>">
+          <%= render 'post_comments/comment', post_comments: @post_comments, comment: @comment%>
         </tbody>
       </table>
       <%= paginate @post_comments %>
-      <%= form_with(model:[@comment, @post_comment],local:true) do |f| %>
+
+      <!--コメント投稿-->
+      <%= form_with model:[@comment, @post_comment], remote: true do |f| %>
         <div class="form_group">
-          <label id="post_comment">コメント</label>
-          <%= f.text_area :post_comment, class:'form-control', id:'post_comment' %>
+          <label>コメント</label>
+          <%= f.text_area :post_comment, class:'form-control', size:'90x5' %>
         </div>
         <div class="mt-2">
           <%= f.submit '投稿', class:'btn btn-info mb-3'%>
