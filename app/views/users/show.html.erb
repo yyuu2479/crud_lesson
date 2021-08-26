@@ -24,7 +24,9 @@
       <%= render 'users/favorite', favorites: @favorites %>
       <!--投稿-->
       <h2 class="edit-title pl-1"><strong>投稿一覧</strong></h2>
-      <%= render 'users/list', comments: @comments%>
+      <div>
+        <%= render 'users/list', comments: @comments%>
+      </div>
       <%= paginate @comments %>
     </div>
   </div>
