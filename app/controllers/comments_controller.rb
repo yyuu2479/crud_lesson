@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.page(params[:page]).reverse_order
+    sort = params[:keyword]
+    comments = Comment.sort_for(sort)
+    @comments = Kaminari.paginate_array(comments).page(params[:page])
     @comment = Comment.new
   end
 
@@ -19,6 +21,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
   end
+
 
   def create
     @comment = Comment.new(comment_params)

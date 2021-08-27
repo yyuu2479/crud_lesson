@@ -11,6 +11,10 @@
 <div class="container">
   <div class="ml-2 main-title">
     <h2 class="pl-2"><strong>投稿一覧</strong></h2>
+    <%= form_with url: comments_path, method: :get, local: true do |f|%>
+      <%= f.select :keyword, options_for_select({'投稿が新しい順'=>'new', '投稿が古い順'=>'old', 'いいねが多い順'=>'favorites', 'いいねが少ない順'=>'disfavorites'})%>
+      <%= f.submit '検索'%>
+    <%end%>
   </div>
 <!--投稿一覧-->
   <%= render 'comments/list', comments:@comments %>

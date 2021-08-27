@@ -5,7 +5,10 @@ class Comment < ApplicationRecord
   attachment :image
   
   belongs_to :user
+  
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
+  
   has_many :post_comments, dependent: :destroy
   
   def favorited_by?(user)
@@ -23,6 +26,21 @@ class Comment < ApplicationRecord
       Comment.where('title LIKE ?', '%' + content)
     else
       Comment.where('title LIKE ?', '%' + content + '%')
+    end
+  end
+  
+  
+  def self.sort_for(sort)
+    if sort == "new"
+      self.all.order(created_at: :DESC)
+    elsif sort == "old"
+      self.all.order(created_at: :ASC)
+    elsif sort == "favorites"
+      self.includes(:favorited_users).sort{|a, b| b.favorited_users.size <=> a.favorited_users.size}
+    elsif sort == "disfavorites"
+      self.includes(:favorited_users).sort{|a, b| a.favorited_users.size <=> b.favorited_users.size}
+    else
+      self.all.order(created_at: :DESC)
     end
   end
   

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @comments = @user.comments.page(params[:page]).per('2').reverse_order
+    @comments = @user.comments.page(params[:page]).per('4').reverse_order
     @favorites = @user.favorites
   end
 
