@@ -11,10 +11,10 @@ class Comment < ApplicationRecord
   
   has_many :post_comments, dependent: :destroy
   
+  
   def favorited_by?(user)
     self.favorites.where(user_id: user.id).exists?
   end
-  
   
   
   def self.search_for(content, method)
@@ -32,15 +32,15 @@ class Comment < ApplicationRecord
   
   def self.sort_for(sort)
     if sort == "new"
-      self.all.order(created_at: :DESC)
+      self.all.order(created_at: :desc)
     elsif sort == "old"
-      self.all.order(created_at: :ASC)
+      self.all.order(created_at: :asc)
     elsif sort == "favorites"
       self.includes(:favorited_users).sort{|a, b| b.favorited_users.size <=> a.favorited_users.size}
     elsif sort == "disfavorites"
       self.includes(:favorited_users).sort{|a, b| a.favorited_users.size <=> b.favorited_users.size}
     else
-      self.all.order(created_at: :DESC)
+      self.all.order(created_at: :desc)
     end
   end
   
