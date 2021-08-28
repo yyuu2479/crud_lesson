@@ -10,6 +10,7 @@
           <% end %>
           <h5 class="card-title font-weight-bold pt-3">タイトル: <%= @comment.title%></h5>
           <p class="card-text">本文: <%= @comment.body %></p>
+          <p class="far fa-eye text-secondary"><%= @comment.impressionist_count%></p>
         </div>
         <%= link_to '戻る', comments_path, class:'btn btn-primary' %>
       </div>

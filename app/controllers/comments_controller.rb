@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only:[:index, :show, :edit]
   before_action :ensure_correct_comment, only:[:edit, :destroy]
+  
+  impressionist :actions => [:show]
 
   def top
   end
@@ -16,6 +18,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @comment.post_comments.page(params[:page]).per('4').reverse_order
+    impressionist(@comment, nil, unique:[:session_hash.to_s])
   end
 
   def edit

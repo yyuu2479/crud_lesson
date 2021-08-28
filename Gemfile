@@ -74,3 +74,5 @@ gem 'devise'
 gem 'rails-i18n'
 
 gem 'jquery-rails'
+
+gem 'impressionist', '~>1.6.1'
