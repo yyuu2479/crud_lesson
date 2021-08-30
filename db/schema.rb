@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_28_110857) do
+ActiveRecord::Schema.define(version: 2021_08_30_144537) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_08_28_110857) do
     t.string "image_id"
     t.integer "user_id"
     t.integer "impressions_count", default: 0
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -55,6 +64,16 @@ ActiveRecord::Schema.define(version: 2021_08_28_110857) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.string "post_comment"
     t.string "user_id"
@@ -66,6 +85,12 @@ ActiveRecord::Schema.define(version: 2021_08_28_110857) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
