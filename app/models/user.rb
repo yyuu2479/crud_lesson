@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length:{in:1..10}
 
   attachment :profile_image
+  
   has_many :comments, dependent: :destroy
   
   has_many :favorites, dependent: :destroy
@@ -23,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+
 
   def follow(user_id)
     self.follower.create(followed_id: user_id)

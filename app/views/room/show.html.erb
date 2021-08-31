@@ -1,0 +1,21 @@
+<h2><strong><%= @another_entry.user.name %></strong></h2>
+<div class="chat"></div>
+  <%= @messages.each do |m|%>
+    <div class="chat-face">
+      <%= attachment_image_tag m.user, :profile_image, :fill,40,40, format: 'jpeg', 
+      fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg'%>
+    </div>
+    <div class="chat-message">
+      <%= m.message %><br>
+      <%= m.created_at.to_s(:datetime)%>
+    </div>
+  <% end %>
+</div>
+<div class="new-chat-message">
+  <%= form_with model: @message, local: true do |f|%>
+    <%= f.text_field :message, placeholder: "メッセージを入力して下さい"%>
+    <%= f.hidden_field :room_id, value: @room.id%>
+    <%= f.submit '送信'%>
+  <% end %>
+</div>
+
