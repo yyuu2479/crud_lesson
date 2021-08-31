@@ -14,9 +14,9 @@
   </div>
   <div class="ml-3">
     <%= form_with url: comments_path, method: :get  do |f|%>
-      <%= f.select :keyword, options_for_select({'投稿が新しい順'=>'new', '投稿が古い順'=>'old', 
+      <%= f.select :keyword, options_for_select({'投稿が新しい順'=>'new', '投稿が古い順'=>'old',
           'いいねが多い順'=>'favorites', 'いいねが少ない順'=>'disfavorites', '閲覧数が多い順'=>'impressionist', '閲覧数が少ない順'=>'disimpressionist'})%>
-      <%= f.submit '検索'%>
+      <%= f.submit '検索', class:'btn btn-light btn-sm mb-1'%>
     <%end%>
   </div>
 <!--投稿一覧-->
