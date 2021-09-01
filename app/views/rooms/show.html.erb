@@ -1,0 +1,14 @@
+<div class="container">
+  <h2><strong><%= @another_entry.user.name%>さんとのチャット</strong></h2>
+  <div class="line-bc col-md-12" id="message_<%= @room.id%>">
+    <%= render 'messages/message', messages: @messages%>
+  </div>
+  <div class="new-chat-message mb-2 shadow-sm">
+    <%= form_with model: @message do |f|%>
+      <%= f.text_field :message, placeholder: "Enterで送信", class:'form-control chat-message'%>
+      <%= f.hidden_field :room_id, value: @room.id%>
+      <% f.submit %>
+    <% end %>
+  </div>
+  <p><%= link_to '戻る', user_path(@another_entry.user.id), class:'btn btn-primary mt-3' %></p>
+</div>

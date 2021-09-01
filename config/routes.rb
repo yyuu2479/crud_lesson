@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'room/create'
+  get 'room/show'
     devise_for :users
     
     root  'comments#top'
@@ -13,6 +16,10 @@ Rails.application.routes.draw do
         get 'following' => 'relationships#following', as: 'following'
         get 'follower' => 'relationships#follower', as: 'follower'
     end
+    
+    
+    resources :rooms, only:[:show, :create]
+    resources :messages, only:[:create]
     
     get '/search' => 'searchs#index', as: 'search'
 end

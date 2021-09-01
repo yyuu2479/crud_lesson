@@ -1,0 +1,21 @@
+<% if messages.present?%>
+      <% messages.each do |m|%>
+        <% if m.user_id == current_user.id%>
+          <div class="text-right">
+            <div class="mycomment">
+              <p><%= m.message %></p>
+            </div>
+          </div>
+        <% else %>
+          <div class="balloon6 text-left">
+            <div class="faceicon">
+              <%= attachment_image_tag m.user, :profile_image, :fill,30,30, format: 'jpeg',
+              fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', class: 'rounded-circle'%>
+            </div>
+            <div class="says">
+              <p><%= m.message %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>

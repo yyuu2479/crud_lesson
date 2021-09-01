@@ -1,33 +1,40 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-10 col-md-8 col-lg-7 mt-5 py-5 pl-5 shadow mx-auto edit-title">
-      <h2 class="font-italic"><strong>ユーザー詳細ページ</strong></h2>
-      <%= attachment_image_tag @user, :profile_image, :fill,100,100, format: 'jpeg',
-      fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'100x100', class:'img-thumbnail rounded-circle'%>
-      <p class="font-weight-bold d-inline-block ml-3"><%= @user.name%></p>
-      <p class="font-weight-light mt-2">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
-      <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
-      <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
-      <!--フォロー機能,フォロー・フォロワー一覧-->
-      <div class="follow_<%= @user.id%>">
+  <div class="col-sm-10 col-md-8 col-lg-7 mt-5 py-5 pl-5 shadow mx-auto edit-title">
+    <h2 class="font-italic"><strong>ユーザー詳細ページ</strong></h2>
+    <%= attachment_image_tag @user, :profile_image, :fill,100,100, format: 'jpeg',
+    fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'100x100', class:'img-thumbnail rounded-circle'%>
+    <p class="font-weight-bold d-inline-block ml-3"><%= @user.name%></p>
+    <p class="font-weight-light mt-2">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
+    <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
+    <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
+    
+    <!--フォロー機能 & DM機能-->
+    <div class = "row">
+      <div class="follow_<%= @user.id%> ml-3 mb-3">
         <%= render 'relationships/follow', user: @user%>
       </div>
-      <%= link_to 'フォロー一覧', user_following_path(@user.id), class:'btn btn-primary' %>
-      <%= link_to 'フォロワー一覧', user_follower_path(@user.id), class:'btn btn-primary' %>
-      <p><%= link_to '戻る', comments_path, class:'btn btn-primary mt-3' %></p>
+      <div class="chat_<%= @user.id%> ml-1 mb-3" >
+        <%= render 'users/chat', user: @user, is_room: @is_room, room_id: @room_id, entry: @entry%>
+      </div>
     </div>
+    
+    <!--フォロー・フォロワー 一覧-->
+    <%= link_to 'フォロー一覧', user_following_path(@user.id), class:'btn btn-primary' %>
+    <%= link_to 'フォロワー一覧', user_follower_path(@user.id), class:'btn btn-primary' %>
+    
+    <p><%= link_to '戻る', comments_path, class:'btn btn-primary mt-3' %></p>
+  </div>
 
     <!--いいね・投稿一覧-->
-    <div class="col-md-12 col-lg-10 mx-auto">
-      <!--いいね-->
-      <h2 class="edit-title pl-1"><strong>いいね一覧</strong></h2>
-      <%= render 'users/favorite', favorites: @favorites %>
-      <!--投稿-->
-      <h2 class="edit-title pl-1"><strong>投稿一覧</strong></h2>
-      <div>
-        <%= render 'users/list', comments: @comments%>
-      </div>
-      <%= paginate @comments %>
+  <div class="col-md-12 col-lg-10 mx-auto">
+    <!--いいね-->
+    <h2 class="edit-title pl-1"><strong>いいね一覧</strong></h2>
+    <%= render 'users/favorite', favorites: @favorites %>
+    <!--投稿-->
+    <h2 class="edit-title pl-1"><strong>投稿一覧</strong></h2>
+    <div>
+     <%= render 'users/list', comments: @comments%>
     </div>
+    <%= paginate @comments %>
   </div>
 </div>

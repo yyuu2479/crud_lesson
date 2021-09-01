@@ -16,7 +16,7 @@
           <tr>
             <td><%= attachment_image_tag record, :profile_image, :fill,65,65, format: 'jpeg',
             fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6'%></td>
-            <td><%= record.name %></td>
+            <td><%= link_to record.name, user_path(record.id) %></td>
             <td><%= record.created_at.to_s(:datetime)%></td>
             <td><%= record.updated_at.to_s(:datetime)%></td>
             <td></td>
