@@ -2,17 +2,17 @@
 <% visited = notification.visited %>
 <tr>
   <td>
-    <span><%= link_to visitor.name, user_path(visitor) %>さんが</span>
+    <span><%= link_to visitor.name, user_path(visitor), class:'text-success font-weight-bold' %>さんが</span>
 
     <% if notification.action == 'follow'%>
       <p class="d-inline-block">あなたをフォローしました！</p>
     <% elsif notification.action == 'favorite'%>
-      <p class="d-inline-block"><%= link_to 'あなたの投稿', comment_path(notification.comment.id) %>にいいねしました！</p>
+      <p class="d-inline-block"><%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にいいねしました！</p>
     <% elsif notification.action == 'post_comment'%>
       <% if notification.comment.user.id == visited.id %>
-        <span><%= link_to 'あなたの投稿', comment_path(notification.comment.id) %>にコメントしました！</span>
+        <span><%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にコメントしました！</span>
       <% else %>
-        <span><%= notification.comment.user.name %>さんの投稿にコメントしました！</span>
+        <span><%= link_to notification.comment.user.name, user_path(notification.comment.user.id), class:'text-success font-weight-bold' %>さんの投稿にコメントしました！</span>
       <% end %>
     <% end %>
     <p><%= PostComment.find_by(id: notification.post_comment_id)&.post_comment %></p>

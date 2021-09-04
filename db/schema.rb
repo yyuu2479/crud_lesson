@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_101829) do
+ActiveRecord::Schema.define(version: 2021_09_04_135747) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_101829) do
     t.integer "comment_id"
     t.integer "post_comment_id"
     t.string "action", default: "", null: false
-    t.string "checked", default: "false", null: false
+    t.string "checked", default: "f", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
