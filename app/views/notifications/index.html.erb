@@ -1,0 +1,16 @@
+<% notifications = @notifications.where.not(visitor_id: current_user.id)%>
+<div class="container">
+  <div class="col-md-7 mt-5 mx-auto">
+    <h2><strong>通知一覧</strong></h2>
+    <table class="table table-hover shadow">
+      <tbody>
+        <% if @notifications.exists? %>
+          <%= render notifications %>
+          <%= paginate notifications%>
+        <% else %>
+          <p>通知はありません</p>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

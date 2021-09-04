@@ -5,8 +5,12 @@ class PostCommentsController < ApplicationController
     @post_comment = PostComment.new(post_comment_params)
     @post_comment.user_id = current_user.id
     @post_comment.comment_id = @comment.id
+    @comment_notification = @post_comment.comment
     @post_comment.save
-
+    
+    @comment_notification = @post_comment.comment
+    @comment_notification.create_notification_comment(current_user, @post_comment.id)
+    
     @post_comments = @comment.post_comments.page(params[:page]).per('4').reverse_order
   end
 

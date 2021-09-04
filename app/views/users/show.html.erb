@@ -7,21 +7,21 @@
     <p class="font-weight-light mt-2">登録日時: <%= @user.created_at.to_s(:datetime) %></p>
     <p class="font-weight-light">更新日時: <%= @user.updated_at.to_s(:datetime) %></p>
     <p><%= link_to 'ユーザー編集', edit_user_path(@user.id), class:'btn btn-light'%></p>
-    
+
     <!--フォロー機能 & DM機能-->
     <div class = "row">
       <div class="follow_<%= @user.id%> ml-3 mb-3">
         <%= render 'relationships/follow', user: @user%>
       </div>
       <div class="chat_<%= @user.id%> ml-1 mb-3" >
-        <%= render 'users/chat', user: @user, is_room: @is_room, room_id: @room_id, entry: @entry%>
+        <%= render 'users/chat', user: @user, is_room: @is_room, room: @room, room_id: @room_id, entry: @entry%>
       </div>
     </div>
-    
+
     <!--フォロー・フォロワー 一覧-->
     <%= link_to 'フォロー一覧', user_following_path(@user.id), class:'btn btn-primary' %>
     <%= link_to 'フォロワー一覧', user_follower_path(@user.id), class:'btn btn-primary' %>
-    
+
     <p><%= link_to '戻る', comments_path, class:'btn btn-primary mt-3' %></p>
   </div>
 

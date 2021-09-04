@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     @comment = Comment.find(params[:comment_id])
     @favorite = Favorite.new(user_id: user.id, comment_id: @comment.id)
     @favorite.save
+    @comment.create_notification_like(current_user)
   end
 
   def destroy

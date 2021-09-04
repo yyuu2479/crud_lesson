@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'room/create'
-  get 'room/show'
     devise_for :users
     
     root  'comments#top'
@@ -20,6 +17,8 @@ Rails.application.routes.draw do
     
     resources :rooms, only:[:show, :create]
     resources :messages, only:[:create]
+    
+    resources :notifications, only:[:index]
     
     get '/search' => 'searchs#index', as: 'search'
 end

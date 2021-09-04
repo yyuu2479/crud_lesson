@@ -13,6 +13,8 @@ class RelationshipsController < ApplicationController
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])
     
+    @user.create_notification_follow(current_user)
+    
     @current_user_entry = Entry.where(user_id: current_user.id)
     @user_entry = Entry.where(user_id: @user.id)
 
