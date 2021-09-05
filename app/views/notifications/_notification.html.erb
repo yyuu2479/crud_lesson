@@ -7,15 +7,25 @@
     <% if notification.action == 'follow'%>
       <p class="d-inline-block">あなたをフォローしました！</p>
     <% elsif notification.action == 'favorite'%>
-      <p class="d-inline-block"><%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にいいねしました！</p>
+      <p class="d-inline-block">
+        <%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にいいねしました！
+      </p>
     <% elsif notification.action == 'post_comment'%>
       <% if notification.comment.user.id == visited.id %>
-        <span><%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にコメントしました！</span>
+        <span>
+          <%= link_to 'あなたの投稿', comment_path(notification.comment.id), class:'text-success font-weight-bold' %>にコメントしました！
+        </span>
       <% else %>
-        <span><%= link_to notification.comment.user.name, user_path(notification.comment.user.id), class:'text-success font-weight-bold' %>さんの投稿にコメントしました！</span>
+        <span>
+          <%= link_to notification.comment.user.name, user_path(notification.comment.user.id), class:'text-success font-weight-bold' %>さんの投稿にコメントしました！
+        </span>
       <% end %>
+      <p class="opacity">
+        <%= notification.post_comment.post_comment%>
+      </p>
     <% end %>
-    <p><%= PostComment.find_by(id: notification.post_comment_id)&.post_comment %></p>
-    <p class="float-right"><%= time_ago_in_words(notification.created_at).upcase %>前</p>
+    <div class="text-right">
+      <p><%= time_ago_in_words(notification.created_at).upcase %>前</p>
+    </div>
   </td>
 </tr>

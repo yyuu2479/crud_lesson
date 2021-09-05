@@ -71,7 +71,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari'
 
 gem 'devise'
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 5.1'
 
 gem 'jquery-rails'
 

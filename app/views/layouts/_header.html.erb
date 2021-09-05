@@ -24,24 +24,25 @@
                 <%= attachment_image_tag current_user, :profile_image, :fill,40,40, format: 'jpeg',
                 fallback: 'no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpeg', size:'40x40', class:'rounded-circle'%>
               <% end %>
-
               <%= link_to notifications_path do %>
-              <% if unchecked_notifications.any? %>
-                <i class="fas fa-circle n-circle"></i>
-              <% end %>
-                <li class="fas fa-bell btn btn-dark nav-item">通知一覧</li>
+                <% if unchecked_notifications.any? %>
+                  <i class="fas fa-circle n-circle"></i>
+                <% end %>
+                 <li class="fas fa-bell btn btn-dark nav-item">通知一覧</li>
               <% end %>
               <%= link_to destroy_user_session_path, method: :delete do%>
                 <li class="btn btn-dark fas fa-sign-out-alt nav-item">ログアウト</li>
               <% end %>
             </div>
           <% else %>
-            <%= link_to new_user_registration_path do%>
-              <li class="btn btn-primary fas fa-user-plus p-3 nav-item">新規登録</li>
-            <% end %>
-            <%= link_to new_user_session_path do%>
-              <li class="btn btn-success fas fa-sign-in-alt ml-3 p-3 nav-item">ログイン</li>
-            <% end %>
+            <div>
+              <%= link_to new_user_registration_path do%>
+                <li class="btn btn-primary fas fa-user-plus p-3 nav-item">新規登録</li>
+              <% end %>
+              <%= link_to new_user_session_path do%>
+                <li class="btn btn-success fas fa-sign-in-alt p-3 nav-item">ログイン</li>
+              <% end %>
+            </div>
           <% end %>
         </ul>
       </div>
