@@ -15,12 +15,12 @@ Rails.application.routes.draw do
         get 'following' => 'relationships#following', as: 'following'
         get 'follower' => 'relationships#follower', as: 'follower'
     end
-    
-    
+
     resources :rooms, only:[:show, :create]
     resources :messages, only:[:create]
     
     resources :notifications, only:[:index]
+    
     
     get '/search' => 'searchs#index', as: 'search'
 end
