@@ -29,12 +29,15 @@
   <div class="col-md-12 col-lg-10 mx-auto">
     <!--いいね-->
     <h2 class="edit-title pl-1"><strong>いいね一覧</strong></h2>
-    <%= render 'users/favorite', favorites: @favorites %>
+    <div>
+      <%= render 'users/favorite', favorites: @favorites %>
+      <%= paginate @favorites %>
+    </div>
     <!--投稿-->
     <h2 class="edit-title pl-1"><strong>投稿一覧</strong></h2>
     <div>
-     <%= render 'users/list', comments: @comments%>
+      <%= render 'users/list', comments: @comments%>
+      <%= paginate @comments %>
     </div>
-    <%= paginate @comments %>
   </div>
 </div>

@@ -4,8 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
     @comments = @user.comments.page(params[:page]).per('4').reverse_order
-    @favorites = @user.favorites
+    @favorites = @user.favorites.page(params[:page]).per('4').reverse_order
 
     @current_user_entry = Entry.where(user_id: current_user.id)
     @user_entry = Entry.where(user_id: @user.id)
