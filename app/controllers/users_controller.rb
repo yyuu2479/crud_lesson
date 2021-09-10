@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     @current_user_entry = Entry.where(user_id: current_user.id)
     @user_entry = Entry.where(user_id: @user.id)
-
+    
     unless @user.id == current_user.id
       @current_user_entry.each do |cu|
         @user_entry.each do |u|

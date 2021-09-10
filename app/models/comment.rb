@@ -52,6 +52,7 @@ class Comment < ApplicationRecord
     end
   end
 
+
   # いいね通知
   def create_notification_like(current_user)
     temp = Notification.where(["visitor_id=? and visited_id=? and comment_id=? and action=?", current_user.id, user_id, id, 'favorite'])
@@ -70,7 +71,8 @@ class Comment < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
+
   # コメント通知
   def create_notification_comment(current_user, post_comment_id)
     temp_ids = PostComment.select(:user_id).where(comment_id: id).where.not(user_id: current_user.id).distinct
