@@ -16,6 +16,11 @@
       </div>
 
       <div class="field form-group">
+        <%= f.label :gender %><br />
+        <%= f.select :gender, User.genders.keys.map{|k| [k,k]}, autofocus: true, autocomplete: "gender", class:'form-control' %>
+      </div>
+
+      <div class="field form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %>文字以上)</em>
