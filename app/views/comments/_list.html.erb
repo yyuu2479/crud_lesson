@@ -1,4 +1,4 @@
-<table class="table table-hover shadow-sm">
+<table class="table shadow-sm">
   <thead>
     <tr>
       <th></th>
@@ -13,8 +13,14 @@
   <tbody>
     <% comments.each do |comment|%>
       <tr id="comment_<%= comment.id%>">
-        <td><%= attachment_image_tag comment, :image, :fill,100,100, format: 'jpeg',
-        fallback:'noimage.jpeg', size:'100x100'%></td>
+
+        <td class="sample2">
+          <%= attachment_image_tag comment, :image, :fill,100,100, format: 'jpeg', fallback:'noimage.jpeg', size:'100x100' %>
+          <div class="mask">
+	        	<div class="caption">It's fresh !</div>
+	        </div>
+        </td>
+
         <td><%= link_to comment.title, comment_path(comment.id) %></td>
         <td>
           <p class="text-truncate"><%= comment.body %></p>
