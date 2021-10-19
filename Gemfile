@@ -74,8 +74,8 @@ gem 'kaminari'
 gem 'devise'
 gem 'rails-i18n', '~> 5.1'
 
-gem 'jquery-rails'
-
 gem 'impressionist', '~>1.6.1'
 
 gem 'dotenv-rails'
+
+gem 'activeadmin'
